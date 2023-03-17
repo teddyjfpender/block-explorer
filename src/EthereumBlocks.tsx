@@ -33,7 +33,7 @@ const EthereumBlocks: React.FC = () => {
                         return (
                         <tr key={block.blockNumber}>
                             <td>{block.blockNumber}</td>
-                            <td>{block.timestamp ? new Date(block.timestamp * 1000).toLocaleDateString() : "n/a"}</td>
+                            <td>{block.timestamp ? new Date(block.timestamp * 1000).toLocaleDateString('en-GB', {hour: 'numeric', minute: 'numeric', second: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}) : "n/a"}</td>
                             <td>{block.transactions}</td>
                         </tr>
                         );
