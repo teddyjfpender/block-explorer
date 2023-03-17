@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { AlchemyProvider}  from "ethers";
 import { BlockData, Settings} from "./types"
 import { fetchBlocks } from "./functions/fetchBlocks";
+import { Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+
 
 const settings: Settings = {network: process.env.REACT_APP_NETWORK, apiKey: process.env.REACT_APP_API_KEY}
 
@@ -20,26 +21,26 @@ const EthereumBlocks: React.FC = () => {
     return (
         <div>
             <h2>Last 10 Blocks</h2>
-            <table>
-            <thead>
-                    <tr>
-                        <th>Block Number</th>
-                        <th>Timestamp</th>
-                        <th>Transactions</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Block Number</TableCell>
+                        <TableCell>Timestamp</TableCell>
+                        <TableCell>Transactions</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {blocks.map((block) => {
                         return (
-                        <tr key={block.blockNumber}>
-                            <td>{block.blockNumber}</td>
-                            <td>{block.timestamp ? new Date(block.timestamp * 1000).toLocaleDateString('en-GB', {hour: 'numeric', minute: 'numeric', second: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}) : "n/a"}</td>
-                            <td>{block.transactions}</td>
-                        </tr>
+                        <TableRow key={block.blockNumber}>
+                            <TableCell>{block.blockNumber}</TableCell>
+                            <TableCell>{block.timestamp ? new Date(block.timestamp * 1000).toLocaleDateString('en-GB', {hour: 'numeric', minute: 'numeric', second: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}) : "n/a"}</TableCell>
+                            <TableCell>{block.transactions}</TableCell>
+                        </TableRow>
                         );
                     })}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
             </div>
     );
 };
