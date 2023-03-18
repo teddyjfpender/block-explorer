@@ -1,9 +1,11 @@
-# Getting Started with Create React App
+# Ethereum Block Explorer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Getting Started
+Clone this repository and run `npm install`. Next create a `.env` file in the project's root with `REACT_APP_NETWORK` and `REACT_APP_API_KEY`parameters for your network and API key. TODO: generalise with any rpc-url. To install `@material-ui/core` try adding `--legacy-peer-deps`.
 
+## Available Scripts
 In the project directory, you can run:
 
 ### `npm start`
