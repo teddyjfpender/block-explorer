@@ -77,16 +77,17 @@ const EthereumBlocks: React.FC = () => {
                     </Table>
                     {/* Table pagination component */}
                     <TablePagination
-                        count={blocks.length} // Total count is the length of the blocks array
-                        rowsPerPage={paginationDataBlocks.rowsPerPage} // Rows per page is the current rowsPerPage value
-                        page={paginationDataBlocks.page} // Current page is the current page value
-                        onPageChange={(_event, newPage) => {
-                            setPaginationDataBlocks(prevState => ({ ...prevState, page: newPage }));
-                        }}
-                        onRowsPerPageChange={(event) => {
-                            setPaginationDataBlocks(prevState => ({ ...prevState, page: 0, rowsPerPage: parseInt(event.target.value, 10) }));
-                        }}
-                    />
+                            component="div" // Set the root element of the component to div
+                            count={blocks.length} // Total count is the length of the blocks array
+                            rowsPerPage={paginationDataBlocks.rowsPerPage} // Rows per page is the current rowsPerPage value
+                            page={paginationDataBlocks.page} // Current page is the current page value
+                            onPageChange={(_event, newPage) => {
+                                setPaginationDataBlocks(prevState => ({ ...prevState, page: newPage }));
+                            }}
+                            onRowsPerPageChange={(event) => {
+                                setPaginationDataBlocks(prevState => ({ ...prevState, page: 0, rowsPerPage: parseInt(event.target.value, 10) }));
+                            }}
+                        />
                 </TableContainer>
             </div>
             <div style={{ display: 'inline-block', padding: '10px' }}>
@@ -122,16 +123,17 @@ const EthereumBlocks: React.FC = () => {
                     </Table>
                     {/* Table pagination component */}
                     <TablePagination
-                        count={latestBlockTxs.length} // Total count is the length of the blocks array
-                        rowsPerPage={paginationDataTransactions.rowsPerPage} // Rows per page is the current rowsPerPage value
-                        page={paginationDataTransactions.page} // Current page is the current page value
-                        onPageChange={(_event, newPage) => {
-                            setPaginationDataTransactions(prevState => ({ ...prevState, page: newPage }));
-                        }}
-                        onRowsPerPageChange={(event) => {
-                            setPaginationDataTransactions(prevState => ({ ...prevState, page: 0, rowsPerPage: parseInt(event.target.value, 10) }));
-                        }}
-                    />
+                            component="div" // Set the root element of the component to div
+                            count={latestBlockTxs.length} // Total count is the length of the blocks array
+                            rowsPerPage={paginationDataTransactions.rowsPerPage} // Rows per page is the current rowsPerPage value
+                            page={paginationDataTransactions.page} // Current page is the current page value
+                            onPageChange={(_event, newPage) => {
+                                setPaginationDataTransactions(prevState => ({ ...prevState, page: newPage }));
+                            }}
+                            onRowsPerPageChange={(event) => {
+                                setPaginationDataTransactions(prevState => ({ ...prevState, page: 0, rowsPerPage: parseInt(event.target.value, 10) }));
+                            }}
+                        />
                 </TableContainer>
             </div>
         </div>
