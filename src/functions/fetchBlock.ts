@@ -1,8 +1,8 @@
 import { BlockData, Transaction, Settings} from "../types"
-import { AlchemyProvider } from "ethers"
+import { AlchemyProvider, JsonRpcApiProvider, JsonRpcProvider } from "ethers"
 
 export async function fetchBlocks(settings: Settings): Promise<BlockData[]> {
-    const provider = new AlchemyProvider(settings.network, settings.apiKey)
+    const provider = settings.url ? new JsonRpcProvider(settings.url) : new AlchemyProvider(settings.network, settings.apiKey);
     const currentBlock = await provider.getBlockNumber();
     const blockNumbers = Array.from({ length: 20}, (_, i) => currentBlock - i);
 
@@ -12,7 +12,7 @@ export async function fetchBlocks(settings: Settings): Promise<BlockData[]> {
     return blockData;
 }
 
-async function getBlockData(provider: AlchemyProvider, blockNumber: number): Promise<BlockData> {
+async function getBlockData(provider: AlchemyProvider | JsonRpcProvider, blockNumber: number): Promise<BlockData> {
         const block = await provider.getBlock(blockNumber)
         const transactionsHashes = Array.from(block?.transactions || []);
         return {
@@ -24,7 +24,7 @@ async function getBlockData(provider: AlchemyProvider, blockNumber: number): Pro
 };
 
 export async function fetchLatestBlockTransactions(settings: Settings, fetchedBlocks: BlockData[]): Promise<Transaction[]> {
-    const provider = new AlchemyProvider(settings.network, settings.apiKey)
+    const provider = settings.url ? new JsonRpcProvider(settings.url) : new AlchemyProvider(settings.network, settings.apiKey);
     const latestBlock = fetchedBlocks.shift();
     const latestBlockTransactions = latestBlock?.transactionHashes;
     
@@ -34,7 +34,7 @@ export async function fetchLatestBlockTransactions(settings: Settings, fetchedBl
     return transactions   
 }
 
-async function getTransactionData(provider: AlchemyProvider, transactionHash: string): Promise<Transaction> {
+async function getTransactionData(provider: AlchemyProvider | JsonRpcProvider, transactionHash: string): Promise<Transaction> {
     const transaction = await provider.getTransaction(transactionHash)
     return {
         from: transaction?.from,

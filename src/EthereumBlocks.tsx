@@ -24,7 +24,6 @@ const EthereumBlocks: React.FC = () => {
         };
         const getLatestBlock = async (b: BlockData[]) => {
             const latestBlockTransactions = await fetchLatestBlockTransactions(settings, b);
-            console.log(latestBlockTransactions);
             setLatestBlockTxs(latestBlockTransactions);
         };
 

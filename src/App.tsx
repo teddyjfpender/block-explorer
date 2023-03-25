@@ -7,18 +7,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          A work in progress.
+          A very small block explorer.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ethereum Block Explorer
-        </a>
       </header>
       <EthereumBlocks />
     </div>

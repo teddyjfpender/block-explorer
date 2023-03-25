@@ -6,8 +6,9 @@ export interface BlockData {
 }
 
 export interface Settings {
-    network: string | undefined,
-    apiKey: string | undefined,
+    network?: string | undefined,
+    apiKey?: string | undefined,
+    url?: string
 }
 
 export interface Transaction {
