@@ -2,17 +2,9 @@ import React, { useEffect, useState } from "react";
 import { BlockData, PaginationData, Settings, Transaction} from "./types"
 import { fetchBlocks, fetchLatestBlockTransactions } from "./functions/fetchBlock";
 import { Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
-import TablePagination, { TablePaginationProps } from '@mui/material/TablePagination';
+import TablePagination from '@mui/material/TablePagination';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-    tableContainer: {
-      marginTop: 20,
-      marginBottom: 20,
-    },
-  });
 
 const settings: Settings = {network: process.env.REACT_APP_NETWORK, apiKey: process.env.REACT_APP_API_KEY}
 
